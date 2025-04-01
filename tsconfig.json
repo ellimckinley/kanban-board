@@ -31,6 +31,14 @@
     "outDir": "./dist" /* Redirect output structure to the 'dist' folder. */
   },
   /* ADDED */
-  "exclude": ["node_modules", "dist", "client/dist", "server/dist"] /* Exclude all 'dist' folders and their contents from input files. */,
-  "include": ["client/src/**/*", "src/**/*"] /* Include only the source files for compilation. */
+  "exclude": [
+    "node_modules",
+    "dist",
+    "client/dist",
+    "server/dist"
+  ] /* Exclude all 'dist' folders and their contents from input files. */,
+  "include": [
+    "client/src/**/*",
+    "src/**/*"
+  ] /* Include only the source files for compilation. */
 }
