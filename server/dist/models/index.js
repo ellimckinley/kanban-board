@@ -12,6 +12,24 @@ const sequelize = process.env.DB_URL
             decimalNumbers: true,
         },
     });
+// setting db up for Render
+// let sequelize;
+// if (process.env.DB_URL) {
+//   sequelize = new Sequelize(process.env.DB_URL);
+// } else {
+//   sequelize = new Sequelize(
+//     process.env.DB_NAME || "",
+//     process.env.DB_USER || "",
+//     process.env.DB_PW,
+//     {
+//       host: 'localhost',
+//       dialect: 'postgres',
+//       dialectOptions: {
+//         decimalNumbers: true,
+//       }
+//     },
+//   );
+// }
 const User = UserFactory(sequelize);
 const Ticket = TicketFactory(sequelize);
 User.hasMany(Ticket, { foreignKey: "assignedUserId" });
