@@ -1,4 +1,4 @@
-import { JwtPayload, jwtDecode } from 'jwt-decode';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
 import type { UserData } from '../interfaces/UserData';
 
 class AuthService {

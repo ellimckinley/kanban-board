@@ -18,14 +18,19 @@ const Login = () => {
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    try {
-      const data = await login(loginData);
+  e.preventDefault();
+  try {
+    const response = await login(loginData);
+
+    // Check if the response is JSON
+    const data = await response.json();
+      localStorage.setItem('token', data.token);
       Auth.login(data.token);
-    } catch (err) {
-      console.error('Failed to login', err);
-    }
-  };
+      } catch (err: unknown) {
+    console.error('Failed to login', err);
+
+  }
+};
 
   return (
     <div className='container'>

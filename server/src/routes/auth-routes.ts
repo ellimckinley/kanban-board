@@ -11,15 +11,22 @@ export const login = async (req: Request, res: Response) => {
     where: { username },
   });
   if (!user) {
-    return res.status(401).json({ message: 'Authentication failed' });
+    // Return a JSON response for "User not found"
+    return res.status(401).json({ message: 'Authentication failed: User not found' });
   }
 
+  // Verify the password
   const passwordIsValid = await bcrypt.compare(password, user.password);
   if (!passwordIsValid) {
-    return res.status(401).json({ message: 'Authentication failed' });
+    // Return a JSON response for "Incorrect password"
+    return res.status(401).json({ message: 'Authentication failed: Incorrect password' });
   }
 
-  const secretKey = process.env.JWT_SECRET_KEY || '';
+  // Generate a JWT token
+  const secretKey = process.env.JWT_SECRET_KEY;
+  if (!secretKey) {
+    return res.status(500).json({ message: 'JWT secret key is not set in the environment variables' });
+  }
 
   const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
   return res.json({ token });
