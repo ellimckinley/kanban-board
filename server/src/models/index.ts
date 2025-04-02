@@ -6,7 +6,15 @@ import { UserFactory } from "./user.js";
 import { TicketFactory } from "./ticket.js";
 
 const sequelize = process.env.DB_URL
-  ? new Sequelize(process.env.DB_URL)
+  ? new Sequelize(process.env.DB_URL, {
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  })
   : new Sequelize(
     process.env.DB_NAME || "",
     process.env.DB_USER || "",
@@ -64,6 +72,16 @@ const sequelize = process.env.DB_URL
 //       },
 //     }
 //   );
+
+// Test the database connection
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Database connected successfully!");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
 
 const User = UserFactory(sequelize);
 const Ticket = TicketFactory(sequelize);
