@@ -2,11 +2,9 @@
 
 ## Description
 
-Added uthentication with JWT to an existing Kanban board application.
+This project enhances an existing Kanban board application by integrating authentication using JSON Web Tokens (JWT). The updates include completing the UI for the login page, implementing JWT-based authentication in the server API, and deploying the fully functional application to Render.
 
-The Kanban board application was already created. I completed the UI for the login page, added authentication with JWT to the server API, and then deployed the entire application to Render.
-
-Deployed Application: []()
+Deployed Application: [https://kanban-board-n0eb.onrender.com](https://kanban-board-n0eb.onrender.com)
 
 [Kanban Board Screenshot]()
 []()
@@ -43,10 +41,16 @@ Deployed Application: []()
 
 ## Usage Information
 
-1.
-2.
-3.
-4.
+To use the Kanban Board application:
+
+1. Open the deployed application in your browser: [Kanban Board](https://kanban-board-n0eb.onrender.com).
+2. Log in with your existing credentials.
+3. Once logged in, you can:
+   - Create new boards to organize your tasks.
+   - Add tasks to specific boards.
+   - View and manage tasks within each board.
+   - Edit task to move tasks between columns (e.g., To Do, In Progress, Done).
+4. Log out when you are finished to ensure your account remains secure.
 
 ## License
 
@@ -59,12 +63,27 @@ This project is licensed under the [MIT](https://opensource.org/licenses/MIT) li
 - React
 - JavaScript
 - TypeScript
-- GitHub API
+- PostgreSQL
+- Sequelize ORM
 - Render
 
 ## API Reference
 
--
+- **Authentication Endpoints**
+
+  - `POST /api/auth/login`: Authenticate a user and return a JWT token.
+  - `POST /api/auth/register`: Register a new user.
+
+- **Board Endpoints**
+
+  - `GET /api/boards`: Retrieve all boards for the authenticated user.
+  - `POST /api/boards`: Create a new board.
+
+- **Task Endpoints**
+  - `GET /api/boards/:boardId/tasks`: Retrieve all tasks for a specific board.
+  - `POST /api/boards/:boardId/tasks`: Add a new task to a board.
+
+For more details, visit the deployed application: [Kanban Board](https://kanban-board-n0eb.onrender.com).
 
 ## Contribution Guidelines
 
