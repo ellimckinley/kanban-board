@@ -5,5 +5,3 @@
 .env.production.local
 .env.local
 
-# node modules
-node_modules/
